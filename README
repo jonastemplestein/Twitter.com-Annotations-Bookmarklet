@@ -1,0 +1,3 @@
+This is a slick bookmarklet that'll display all annotations on any given twitter page.
+
+[This link](javascript:(function(){document.body.appendChild(document.createElement('script')).src='http://github.com/jonashuckestein/Twitter.com-Annotations-Bookmarklet/raw/master/show_annotations.js';})();)
