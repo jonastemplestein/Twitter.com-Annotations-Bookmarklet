@@ -72,7 +72,8 @@ function processJson(response) {
 
         status_div = $("#status_" + statusId);
 
-        status_div.append("<div id=\"annotation_button_"+statusId+"\" class=\"annotation_button\">Show Annotations</div>").toggle(
+        status_div.append("<div id=\"annotation_button_"+statusId+"\" class=\"annotation_button\">Show Annotations</div>");
+        status_div.find(".annotation_button").toggle(
         function() {
             $("#annotation_list_"+statusId).slideDown();
             $("#annotation_button_" + statusId).text("Hide Annotations");
