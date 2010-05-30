@@ -45,7 +45,7 @@ css += "}                                       "
 css += ".annotation_button {                                                               "
 css += "	background: #222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x;     "
 css += "	display: inline-block;                                                           "
-css += "	width: 150px;   margin: 10px;                                                        "
+css += "	width: 150px;   margin: 5px;                                                        "
 css += "	text-align: center;                                                           "
 css += "	padding: 5px 10px 6px;                                                           "
 css += "	color: #fff;                                                                     "
@@ -87,7 +87,7 @@ function processJson(response) {
 
         for (var i = 0; i < response.annotations.length; i++) {
           
-            for( var type in response.annotations[0] ) {
+            for( var type in response.annotations[i] ) {
           
             output += "<li><span class=\"annotation_type\">" + type + "</span>"
             output += "<dl>"
