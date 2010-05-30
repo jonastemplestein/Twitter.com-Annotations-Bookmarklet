@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>Twitter Annotations Bookmarklet</title>
+	
+	<style type="text/css">
+		
+		.awesome, .awesome:visited {
+			background: #222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x; 
+			display: inline-block; 
+			padding: 5px 10px 6px; 
+			color: #fff; 
+			text-decoration: none;
+			-moz-border-radius: 5px; 
+			-webkit-border-radius: 5px;
+			-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+			-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+			text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+			border-bottom: 1px solid rgba(0,0,0,0.25);
+			position: relative;
+			cursor: pointer;
+			font-size: 28px;
+			padding: 13px 35px;
+			margin: 20px;
+			text-align: center;
+		}
+
+			.awesome:hover							{ background-color: #111; color: #fff; }
+			.awesome:active							{ top: 1px; }
+			
+
+			.green.awesome, .green.awesome:visited		{ background-color: #91bd09; }
+			.green.awesome:hover						{ background-color: #749a02; }
+			.blue.awesome, .blue.awesome:visited		{ background-color: #2daebf; }
+			.blue.awesome:hover							{ background-color: #007d9a; }
+			.red.awesome, .red.awesome:visited			{ background-color: #e33100; }
+			.red.awesome:hover							{ background-color: #872300; }
+			.magenta.awesome, .magenta.awesome:visited		{ background-color: #a9014b; }
+			.magenta.awesome:hover							{ background-color: #630030; }
+			.orange.awesome, .orange.awesome:visited		{ background-color: #ff5c00; }
+			.orange.awesome:hover							{ background-color: #d45500; }
+			.yellow.awesome, .yellow.awesome:visited		{ background-color: #ffb515; }
+			.yellow.awesome:hover							{ background-color: #fc9200; }
+		
+		
+		
+		body {
+			font-family: Helvetica;
+			color: #2a2;
+		}
+
+
+		
+		#container {
+			text-align: center;
+			margin: 0 auto;
+			width: 700px;
+			padding: 50px;
+		}
+		
+		
+		
+		
+	</style>
+	
+</head>
+
+
+<body>
+
+	<div id="container">
+		
+		<h1>Pull the following bookmarklet into your bookmarks and click it on any twitter page. Enjoy!</h1>
+	
+		<a class="awesome orange" href="javascript:(function(){document.body.appendChild(document.createElement('script')).src='http://github.com/jonashuckestein/Twitter.com-Annotations-Bookmarklet/raw/master/show_annotations.js';})();">Show Twitter Annotations</a>
+	
+		<p>Source code is available at <a href="http://github.com/jonashuckestein/Twitter.com-Annotations-Bookmarklet">github</a>. Feel free to improve this thing.</p>
+	</div>
+
+</body>
+</html>
