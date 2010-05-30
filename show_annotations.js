@@ -10,25 +10,17 @@
 
 // test url http://api.twitter.com/1/statuses/show/15030304564.json
 //
-if (typeof unsafeWindow.jQuery == 'undefined') {
-    window.setTimeout(tnt_twitter.init, 100);
-    return;
-}
-$ = unsafeWindow.jQuery;
-jQuery = $;
 
 css = ""
 css += ".annotations {                          "
-css += "    display: none;                    "
-css += "    font-size: 10px;                    "
+css += "    display: none;background:#eee;                    "
+css += "    font-size: 11px;                    "
 css += "    clear: both;                        "
 css += "    overflow: auto;padding:10px;                     "
 css += "}                                       "
 css += "                                        "
 css += ".annotations li {                       "
 css += "  margin: 5px;                          "
-css += "  width: 50%;                           "
-css += "  float: left;                          "
 css += "}                                       "
 css += "                                        "
 css += ".annotations .annotation_type {         "
@@ -43,20 +35,17 @@ css += ".annotations dt {                       "
 css += "  margin: 0px;                          "
 css += "  margin-left: 10px;                    "
 css += "  padding-right: 20px;                  "
-css += "  font-weight: normal;                  "
-css += "  font-style: italic;                   "
+css += "  font-weight: normal;width:100px;                  "
+css += "  font-style: italic;float:left; clear: left;                   "
 css += "}                                       "
 css += ".annotations dl dd {                    "
 css += "  margin-left: 10px;                    "
 css += "  padding: 0 0  0;                      "
 css += "}                                       "
-
-
-
 css += ".annotation_button {                                                               "
 css += "	background: #222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x;     "
 css += "	display: inline-block;                                                           "
-css += "	width: 150px;   margin: 5px;                                                        "
+css += "	width: 150px;   margin: 10px;                                                        "
 css += "	text-align: center;                                                           "
 css += "	padding: 5px 10px 6px;                                                           "
 css += "	color: #fff;                                                                     "
@@ -72,48 +61,51 @@ css += "	cursor: pointer;                                                       
 css += "	font-size: 9px; padding: 0px;                                                      "
 css += "}                                                                                  "
 
-$(document).append('<style>' + css + '</style>');
+$("head").append('<style>' + css + '</style>');
 
 
 function processJson(response) {
 
-  
-    statusId = response.id
+    var statusId = response.id
 
     if (response.annotations) {
 
         status_div = $("#status_" + statusId);
 
-        status_div.append("<div id="annotation_button_ "+statusId+""class="annotation_button ">Show Annotations</div>").toggle(
+        status_div.append("<div id=\"annotation_button_"+statusId+"\" class=\"annotation_button\">Show Annotations</div>").toggle(
         function() {
-            $("#annotation_list_" + statusId).slideDown();
+            $("#annotation_list_"+statusId).slideDown();
             $("#annotation_button_" + statusId).text("Hide Annotations");
         },
         function() {
             $("#annotation_list_" + statusId).slideUp(function() {
-                $("#annotation_button_" + statusId).text("Show Annotations")
+            $("#annotation_button_" + statusId).text("Show Annotations")
             });
         });
 
-        var output = "<ul class="annotations " id="annotation_list_ "+statusId+"">"
+        var output = "<ul class=\"annotations\" id=\"annotation_list_"+statusId+"\">"
 
-        for (var i = 0; i < jsonStatus.annotations.length; i++) {
-            output += "<li><span class="annotation_type ">" + type + "</span>"
+        for (var i = 0; i < response.annotations.length; i++) {
+          
+            for( var type in response.annotations[0] ) {
+          
+            output += "<li><span class=\"annotation_type\">" + type + "</span>"
             output += "<dl>"
 
-            for (var name in jsonStatus.annotations[i][type]) {
-                output += "<dt>" + name + "</dt><dd>" + jsonStatus.annotations[i][type][name] + "</dd>"
+            for (var name in response.annotations[i][type]) {
+                output += "<dt>" + name + "</dt><dd>" + response.annotations[i][type][name] + "</dd>"
             }
 
             output += "</dl>"
             output += "</li>"
+          }
         }
+
+        output += "</ul>";
+
+        status_div.append(output);
+
     }
-    output += "</ul><div style="clear: both "></div>"
-    status_div.append(output)
-}
-}
-});
 
 }
 
@@ -132,12 +124,11 @@ function pimpStatus(statusId) {
 
 statusIds = []
 
-
- $(".status").each(function(i) {
+$(".status").each(function(i) {
     statusIds[i] = $(this).attr("id").replace(/status_/, "");
 })
 
- for (var i = 0; i < statusIds.length; i++) {
+for (var i = 0; i < statusIds.length; i++) {
     pimpStatus(statusIds[i])
 }
 
